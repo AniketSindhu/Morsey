@@ -39,8 +39,8 @@ Morse Code. //
 ##### Team
 
 *The team comprises of three members :-
-* Aniket Sindhu,
-* Anshul Vats,
+* Aniket Sindhu
+* Anshul Vats
 * B. Venkatesh
 
 ###### Screeenshots
