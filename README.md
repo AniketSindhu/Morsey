@@ -56,10 +56,10 @@ the dots(dits) and dashes(dahs) that make up
 
 ##### Team
 
-The team comprises of three members :-
-Aniket Sindhu
-Anshul Vats
-B. Venkatesh
+*The team comprises of three members :-
+Aniket Sindhu,
+ Anshul Vats,
+  B. Venkatesh*
 
 
 
