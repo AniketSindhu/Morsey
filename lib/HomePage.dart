@@ -84,6 +84,11 @@ class _HomePageState extends State<HomePage> {
       body:user!=null?StreamBuilder(
         stream: Firestore.instance.collection('signals').where('users',arrayContains:user.email).snapshots(),
         builder: (context,snapshot){
+          if(snapshot.connectionState==ConnectionState.waiting)
+          {
+            return Center(child: CircularProgressIndicator());
+          }
+          else
           if(snapshot.data.documents.length==0)
             {
             return Column(
@@ -219,11 +224,14 @@ class _NewSignalState extends State<NewSignal> {
               final x= await Firestore.instance.collection('signals').document(chatId).get();
               final y= await Firestore.instance.collection('signals').document(chatId).get();
               if(x.exists||y.exists)
-                {}
+                {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){return Signal(widget.user,chatId,chatId.replaceAll('-', '').replaceAll(widget.user.email,'').replaceAll('@gmail.com',''));}));
+                }
               else{
                 await Firestore.instance.collection('signals').document(chatId).setData({'users':[widget.user.email,mailController.text],'chatId':chatId});
                 await Firestore.instance.collection('users').document(widget.user.email).collection('ActiveSignals').document(chatId).setData({'signalId':chatId});
                 await Firestore.instance.collection('users').document(mailController.text).collection('ActiveSignals').document(chatId).setData({'signalId':chatId});
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){return Signal(widget.user,chatId,chatId.replaceAll('-', '').replaceAll(widget.user.email,'').replaceAll('@gmail.com',''));}));
               }
             }
             else
