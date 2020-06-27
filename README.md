@@ -31,9 +31,9 @@ Morse Code. //
  *The Morse Code is believed to be a very efficient language for future.
 
 #### About App
-**Version** = 1.19.0-4.2.pre
-**Channel** = beta
-***Theme*** = Cyberpunk Future
+* Flutter Version = v1.17.4
+* Channel = Stable
+* **Theme** = Cyberpunk Future
 
 
 ##### Team
