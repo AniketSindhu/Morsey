@@ -18,7 +18,7 @@ class _LoginState extends State<Login> {
           Text('MORSEY',style: GoogleFonts.orbitron(textStyle:TextStyle(color:Colors.tealAccent,fontSize:40,fontWeight: FontWeight.bold)),),
           Text('Chat Morse',style: TextStyle(color: Colors.tealAccent),),
           SizedBox(height:10),
-          Lottie.asset('assets/loginAnim.json',repeat: false),
+          Lottie.asset('assets/loginAnim.json'),
           SizedBox(height:10),
           SignInButton(Buttons.GoogleDark, onPressed: ()=>signInWithGoogle(context),text: 'Continue With Google',)
         ]

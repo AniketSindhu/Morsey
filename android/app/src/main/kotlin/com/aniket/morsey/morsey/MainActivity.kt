@@ -1,0 +1,6 @@
+package com.aniket.morsey.morsey
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

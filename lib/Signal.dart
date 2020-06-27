@@ -59,10 +59,21 @@ class _SignalState extends State<Signal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff1B0536),
       appBar: AppBar(
-        centerTitle:true,
-        backgroundColor: Colors.purple[900],
-        title: Text(widget.toUser,style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.tealAccent,fontSize:23,fontWeight: FontWeight.w800)),),
+      centerTitle:true,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+                colors: <Color>[
+              Color(0xffFF21B7),
+              Color(0xffFF8AE6),
+            ])          
+         ),        
+     ), 
+        title: Text(widget.toUser,style:GoogleFonts.montserrat(textStyle:TextStyle(color: Colors.white,fontSize:25,fontWeight: FontWeight.w600)),),
         actions: <Widget>[],
       ),
       body: SafeArea(
@@ -71,7 +82,7 @@ class _SignalState extends State<Signal> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Shake to turn morse into English",style: TextStyle(color:Colors.greenAccent),),
+              child: Text("Shake to turn morse into English",style: TextStyle(color:Colors.white),),
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
@@ -114,7 +125,7 @@ class _SignalState extends State<Signal> {
                         decoration: InputDecoration(
                           hoverColor: Colors.deepPurpleAccent,
                           hintText: "Enter a signal message",
-                          hintStyle: TextStyle(color:Colors.greenAccent),
+                          hintStyle: TextStyle(color:Color(0xffE6BBFC)),
                           border: const OutlineInputBorder(),
                         ),
                         controller: messageController,
@@ -142,8 +153,8 @@ class SendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.send),
-      color: Colors.purpleAccent,
+      icon: Icon(Icons.send,size: 33,),
+      color: Color(0xffFF16CD),
       onPressed: callback,
     );
   }
@@ -183,8 +194,8 @@ class Message extends StatelessWidget {
           bottomRight: Radius.circular(23)),
             gradient: LinearGradient(
               colors: sendByMe ? [
-                Colors.pink,
-                Colors.pinkAccent
+                const Color(0xffFF3798),
+                const Color(0xffFF9E50),
               ]
                   : [
                 Colors.deepPurple,

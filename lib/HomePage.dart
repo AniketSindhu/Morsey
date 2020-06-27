@@ -36,10 +36,21 @@ class _HomePageState extends State<HomePage> {
     var height=SizeConfig.getHeight(context);
     var width=SizeConfig.getWidth(context);
     return Scaffold(
+      backgroundColor: Color(0xff1B0536),
       appBar: AppBar(
-        centerTitle:true,
-        backgroundColor: Colors.purple[900],
-        title: Text('Morsey',style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.greenAccent,fontSize:23,fontWeight: FontWeight.w800)),),
+      centerTitle:true,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+                colors: <Color>[
+                Color(0xff6D0B60),
+                Color(0xffFF21B7),
+            ])          
+         ),        
+     ),
+        title: Text('Morsey',style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:27,fontWeight: FontWeight.w700)),),
         actions: <Widget>[
           PopupMenuButton(
             color:Colors.tealAccent[400],
@@ -68,7 +79,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: fab?FloatingActionButton(
         onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>NewSignal(user)));},
         child: Icon(Icons.add),
-        backgroundColor: Colors.pink[400],
+        backgroundColor: Colors.orange[400],
       ):null,
       body:user!=null?StreamBuilder(
         stream: Firestore.instance.collection('signals').where('users',arrayContains:user.email).snapshots(),
@@ -97,45 +108,46 @@ class _HomePageState extends State<HomePage> {
                itemCount: snapshot.data.documents.length,
                itemBuilder:(context,index){
                  return Padding(
-                   padding: const EdgeInsets.only(top:15),
+                   padding: const EdgeInsets.only(top:10),
                    child: Column(
                      children: <Widget>[
                        ListTile(
-                         onTap: (){
-                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Signal(user,snapshot.data.documents[index].data['chatId'],snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").replaceAll('@gmail.com',''))));
-                         },
-                         title:Text('${snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"")}',style:GoogleFonts.orbitron(textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:14,letterSpacing: 2))),
-                         
-                         leading:Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.greenAccent,
-                            borderRadius: BorderRadius.circular(30)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: <Widget>[
-                                SizedBox(height:4),
-                                Expanded(
-                                  child: Text(snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").substring(0, 1),
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 24,
-                                      fontFamily: 'OverpassRegular',
-                                      fontWeight: FontWeight.w600)),
-                                ),
-                                Text('${Morse(snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").substring(0, 1)).encode()}',style: TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w700),),
-                                SizedBox(height:4)
-                              ],
-                            ),
-                          ),
-                         enabled: true,
-                         trailing: Icon(Icons.navigate_next,color: Colors.greenAccent,size:40),
-                       ),
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Signal(user,snapshot.data.documents[index].data['chatId'],snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").replaceAll('@gmail.com',''))));
+                          },
+                          title:Text('${snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"")}',style:GoogleFonts.orbitron(textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:14,letterSpacing: 2))),
+                          
+                          leading:Container(
+                           height: 60,
+                           width: 60,
+                           decoration: BoxDecoration(
+                           gradient: LinearGradient(
+                             colors: [const Color(0xffFF3798),const Color(0xffFF9E50),]),
+                             borderRadius: BorderRadius.circular(30)),
+                             child: Column(
+                               mainAxisAlignment: MainAxisAlignment.spaceAround,
+                               children: <Widget>[
+                                 SizedBox(height:4),
+                                 Expanded(
+                                   child: Text(snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").substring(0, 1),
+                                     textAlign: TextAlign.center,
+                                     style: TextStyle(
+                                       color: Colors.black,
+                                       fontSize: 24,
+                                       fontFamily: 'OverpassRegular',
+                                       fontWeight: FontWeight.w600)),
+                                 ),
+                                 Text('${Morse(snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").substring(0, 1)).encode()}',style: TextStyle(color:Colors.black,fontSize:22,fontWeight:FontWeight.w700),),
+                                 SizedBox(height:4)
+                               ],
+                             ),
+                           ),
+                          enabled: true,
+                          trailing: Icon(Icons.navigate_next,color: Colors.greenAccent,size:40),
+                        ),
                        Padding(
                          padding: const EdgeInsets.only(top:4.0,left:14,right:14),
-                         child: Divider(color: Colors.pinkAccent,thickness: 1.5,),
+                         child: Divider(color: Colors.pinkAccent,thickness: 1,),
                        )
                      ],
                    ),
@@ -163,6 +175,7 @@ class _NewSignalState extends State<NewSignal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff1B0536),
       appBar: AppBar(
         centerTitle:true,
         backgroundColor: Colors.purple[900],
