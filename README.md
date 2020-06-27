@@ -6,7 +6,7 @@ An interactive messaging platform designed for the users to send the messages in
 
 The main supported language is **English** . 
 
-Users can sign into app using their ***email address*** .
+Users can sign into app using ***Google*** .
 
 Users have to write the message into English and then app translates the message written by user to ***Morse Code*** . 
 
