@@ -68,11 +68,11 @@ class _SignalState extends State<Signal> {
             begin: Alignment.centerLeft,
               end: Alignment.centerRight,
                 colors: <Color>[
-              Color(0xffFF21B7),
-              Color(0xffFF8AE6),
+                Color(0xff6D0B60),
+                Color(0xffFF21B7),
             ])          
          ),        
-     ), 
+        ), 
         title: Text(widget.toUser,style:GoogleFonts.montserrat(textStyle:TextStyle(color: Colors.white,fontSize:25,fontWeight: FontWeight.w600)),),
         actions: <Widget>[],
       ),
@@ -82,7 +82,7 @@ class _SignalState extends State<Signal> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Shake to turn morse into English",style: TextStyle(color:Colors.white),),
+              child: Text(!english?"Shake to turn morse code into English":'Shake to turn English into Morse code',style: TextStyle(color:Colors.white),),
             ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
@@ -207,9 +207,9 @@ class Message extends StatelessWidget {
             textAlign: TextAlign.start,
             style: TextStyle(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 18,
             fontFamily: 'OverpassRegular',
-            fontWeight: FontWeight.w600)),
+            fontWeight: FontWeight.w700)),
       ),
     );
   }

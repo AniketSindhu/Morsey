@@ -8,7 +8,7 @@ import 'package:morsey/config/size.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:morse/morse.dart';
-
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'Login.dart';
 import 'Signal.dart';
 class HomePage extends StatefulWidget {
@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
     FirebaseUser user;
+    int _selectedIndex = 0;
     bool fab=true;
     @override
     getUser()async{
@@ -37,6 +38,37 @@ class _HomePageState extends State<HomePage> {
     var width=SizeConfig.getWidth(context);
     return Scaffold(
       backgroundColor: Color(0xff1B0536),
+      bottomNavigationBar: BottomNavyBar(
+        backgroundColor: Color(0xff260F41),
+        selectedIndex: _selectedIndex,
+        showElevation: true,
+        curve: Curves.easeIn, // use this to remove appBar's elevation
+         onItemSelected: (index) => setState(() {
+                   _selectedIndex = index;
+         }),
+        items: [
+          BottomNavyBarItem(
+              icon: Icon(Icons.message),
+              title: Text('Signals'),
+              activeColor: Color(0xFFFF16CD)
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.school),
+            title: Text('Learn'),
+            activeColor: Colors.red,
+          ),
+          BottomNavyBarItem(
+              icon: Icon(Icons.translate),
+              title: Text('Translate'),
+              activeColor: Color(0xffFFC64D)
+          ),
+          BottomNavyBarItem(
+              icon: Icon(Icons.image),
+              title: Text('Detect'),
+              activeColor: Colors.purpleAccent
+          ),
+        ],
+      ),
       appBar: AppBar(
       centerTitle:true,
       flexibleSpace: Container(
@@ -49,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                 Color(0xffFF21B7),
             ])          
          ),        
-     ),
+        ),
         title: Text('Morsey',style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:27,fontWeight: FontWeight.w700)),),
         actions: <Widget>[
           PopupMenuButton(
@@ -120,8 +152,7 @@ class _HomePageState extends State<HomePage> {
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Signal(user,snapshot.data.documents[index].data['chatId'],snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"").replaceAll('@gmail.com',''))));
                           },
-                          title:Text('${snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"")}',style:GoogleFonts.orbitron(textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:14,letterSpacing: 2))),
-                          
+                          title:Text('${snapshot.data.documents[index].data['chatId'].replaceAll("-","").replaceAll(user.email,"")}',style:GoogleFonts.orbitron(textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize:14,letterSpacing: 2))),                          
                           leading:Container(
                            height: 60,
                            width: 60,
@@ -151,8 +182,8 @@ class _HomePageState extends State<HomePage> {
                           trailing: Icon(Icons.navigate_next,color: Colors.greenAccent,size:40),
                         ),
                        Padding(
-                         padding: const EdgeInsets.only(top:4.0,left:14,right:14),
-                         child: Divider(color: Colors.pinkAccent,thickness: 1,),
+                         padding: const EdgeInsets.only(top:4.0,left:10,right:10),
+                         child: Divider(color: Colors.deepOrange,thickness: 0.3,),
                        )
                      ],
                    ),
