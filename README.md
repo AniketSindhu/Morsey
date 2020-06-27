@@ -24,7 +24,8 @@ Morse Code played a very important role during 20th century and is believed to b
 The idea behind the app was to provide a fun and interactive way to help users to experience the magnificence of Morse Code.
 
 This app can also be seen as a fun way to learn morse code.
-Morse Code is very easy to learn.
+
+
 
 #### Significance of Morse Code
 
@@ -42,10 +43,16 @@ the dots(dits) and dashes(dahs) that make up
  
  The Morse Code is believed to be a very efficient language for future.
 
+
+
+
 #### About App
 **Version** = v1.17.4
 **Channel** = stable
 ***Theme*** = Cyberpunk Future
+
+
+
 
 ##### Team
 
@@ -53,6 +60,9 @@ The team comprises of three members :-
 Aniket Sindhu
 Anshul Vats
 B. Venkatesh
+
+
+
 
 ###### Screeenshots
 
