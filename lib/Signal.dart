@@ -1,14 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
-import 'package:morsey/GoogleSignin.dart';
-import 'package:morsey/config/size.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:morse/morse.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
+import 'package:vibration/vibration.dart';
 
 class Signal extends StatefulWidget {
   final String chatId;
@@ -74,7 +72,14 @@ class _SignalState extends State<Signal> {
          ),        
         ), 
         title: Text(widget.toUser,style:GoogleFonts.montserrat(textStyle:TextStyle(color: Colors.white,fontSize:25,fontWeight: FontWeight.w600)),),
-        actions: <Widget>[],
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.cached),
+          onPressed:(){
+            setState(() {
+              english==false?english=true:english=false;
+            });}
+          )
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -160,30 +165,43 @@ class SendButton extends StatelessWidget {
   }
 }
 
-class Message extends StatelessWidget {
+class Message extends StatefulWidget {
   final String message;
   final bool sendByMe;
 
   Message({@required this.message, @required this.sendByMe});
 
-
   @override
+  _MessageState createState() => _MessageState();
+}
+
+class _MessageState extends State<Message> {
+  Map timimg = {'-': 200, '.': 50, ' ': 0};
+  @override
+  void vibe() {
+    for (int i = 0; i < widget.message.length - 1; i++) {
+      print(widget.message.length);
+      int time = timimg[widget.message[i]];
+      Vibration.vibrate(duration: time);
+      sleep(Duration(milliseconds: time + 100));
+    }
+  }
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
           top: 8,
           bottom: 8,
-          left: sendByMe ? 0 : 24,
-          right: sendByMe ? 24 : 0),
-      alignment: sendByMe ? Alignment.centerRight : Alignment.centerLeft,
+          left: widget.sendByMe ? 0 : 24,
+          right: widget.sendByMe ? 24 : 0),
+      alignment: widget.sendByMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: sendByMe
+        margin: widget.sendByMe
             ? EdgeInsets.only(left: 30)
             : EdgeInsets.only(right: 30),
         padding: EdgeInsets.only(
             top: 17, bottom: 17, left: 20, right: 20),
         decoration: BoxDecoration(
-            borderRadius: sendByMe ? BorderRadius.only(
+            borderRadius: widget.sendByMe ? BorderRadius.only(
                 topLeft: Radius.circular(23),
                 topRight: Radius.circular(23),
                 bottomLeft: Radius.circular(23)
@@ -193,7 +211,7 @@ class Message extends StatelessWidget {
           topRight: Radius.circular(23),
           bottomRight: Radius.circular(23)),
             gradient: LinearGradient(
-              colors: sendByMe ? [
+              colors: widget.sendByMe ? [
                 const Color(0xffFF3798),
                 const Color(0xffFF9E50),
               ]
@@ -203,13 +221,17 @@ class Message extends StatelessWidget {
               ],
             )
         ),
-        child: Text(message,
-            textAlign: TextAlign.start,
-            style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontFamily: 'OverpassRegular',
-            fontWeight: FontWeight.w700)),
+        child: InkWell(
+          onTap: ()=>vibe(),
+            child: Text(widget.message,
+              textAlign: TextAlign.start,
+              style:TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: 'OverpassRegular',
+              fontWeight: FontWeight.w700)
+          ),
+        )
       ),
     );
   }

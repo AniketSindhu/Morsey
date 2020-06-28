@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     FirebaseUser user;
     int _selectedIndex = 0;
     bool fab=true;
+    bool old=false;
     @override
     getUser()async{
     final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -337,11 +338,9 @@ class _OCRState extends State<OCR> {
 class Learn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Image.asset('assets/learnMorse.jpg',height: MediaQuery.of(context).size.height,width:MediaQuery.of(context).size.width),
-      )
-    );
+    return Container(child:Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Center(child: Image.asset('assets/learnMorse.jpg')),
+    ));
   }
 }
