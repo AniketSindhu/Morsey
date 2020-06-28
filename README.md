@@ -7,6 +7,9 @@
 ## Download the app
 [Download Morsey.apk](https://drive.google.com/file/d/1W5a31gIY4IPWH63spN1M1L4lzLNTRPUH/view?usp=sharing)
 
+## Video Illustration
+[Morsey Pitch/Illustration](https://www.youtube.com/watch?v=4k88LQf3ZgE&t=4s)
+
 ## Description
 * The main supported language is **English** . 
 * Users can sign into app using ***Google*** .
@@ -29,7 +32,7 @@
 * This app can also be seen as a fun way to learn morse code.
 * **Morsey** is designed to bring change in the lives of common people 
 
-#### Significance of Morse Code
+### Significance of Morse Code
 
 * **Morse Code** was discovered in 1830s by Samuel Morse since then Morse Code ccame out to be very efficient and one of the best way to
 send secret messages or signals.
@@ -42,19 +45,29 @@ Morse Code. //
  * **Morse Code** is majorly used by *Space Agencies* to send signals in the space to search for the ***extraterrestrial life or aliens*** .
  *The Morse Code is believed to be a very efficient language for future.
 
-#### About App
+### About App
 * Flutter Version = v1.17.4
 * Channel = Stable
 * **Theme** = *Cyberpunk future and Retro*
 
-##### Team
+### Team
 
 *The team comprises of three members :-
 * Aniket Sindhu
 * Anshul Vats
 * B. Venkatesh
 
-###### Screeenshots
+### Screeenshots
+
+#### Chat in morse code(shake to translate)
+
+<img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/morsey%20illustration.gif">
+
+#### Image to text Detection to morse code(morse OCR)
+
+<img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/morse%20illustration.gif">
+
+#### All screens
 
 <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593295865.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332659.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332670.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332706.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332717.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593336151.png">
 
