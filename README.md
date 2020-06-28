@@ -41,8 +41,7 @@ During ***World War 2*** , Morse code was the mostly used signal between *warshi
 the dots(dits) and dashes(dahs) that make up
 Morse Code.
  * **Morse Code** is majorly used by *Space Agencies* to send signals in the space to search for the ***extraterrestrial life or aliens*** .
- 
- *The Morse Code is believed to be a very efficient language for future.
+ * The Morse Code is believed to be a very efficient language for future.
 
 ### About App
 * Flutter Version = v1.17.4
