@@ -310,26 +310,28 @@ class _OCRState extends State<OCR> {
     }
   }
   Widget build(BuildContext context) {
-    return Center(
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Lottie.asset('assets/scan-some-words.json'),
-          SizedBox(height:20),
-          Text(_textValue,style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
-          SizedBox(height:10),
-          Text(Morse(_textValue).encode(),style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
-          SizedBox(height:30),
-          RaisedButton(
-             onPressed: _read,
-            child: new Text('Start Scanning'),
-            color: Color(0xFFFF16CD),
-            splashColor: Colors.orangeAccent,
-          ),
-          SizedBox(height:10),
-          Text('Tap on the text to convert into morse code',style: TextStyle(color:Color(0xffE6BBFC)),)
-        ]
-      )
+    return SingleChildScrollView(
+      child: Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Lottie.asset('assets/scan-some-words.json'),
+            SizedBox(height:20),
+            Text(_textValue,style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
+            SizedBox(height:10),
+            Text(Morse(_textValue).encode(),style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
+            SizedBox(height:30),
+            RaisedButton(
+               onPressed: _read,
+              child: new Text('Start Scanning'),
+              color: Color(0xFFFF16CD),
+              splashColor: Colors.orangeAccent,
+            ),
+            SizedBox(height:10),
+            Text('Tap on the text to convert into morse code',style: TextStyle(color:Color(0xffE6BBFC)),)
+          ]
+        )
+      ),
     );
   }
 }

@@ -176,10 +176,10 @@ class Message extends StatefulWidget {
 }
 
 class _MessageState extends State<Message> {
-  Map timimg = {'-': 200, '.': 50, ' ': 0};
+  Map timimg = {'-': 200, '.': 50, ' ': 0,'/':0};
   @override
   void vibe() {
-    for (int i = 0; i < widget.message.length - 1; i++) {
+    for (int i = 0; i < widget.message.length; i++) {
       print(widget.message.length);
       int time = timimg[widget.message[i]];
       Vibration.vibrate(duration: time);
@@ -194,44 +194,44 @@ class _MessageState extends State<Message> {
           left: widget.sendByMe ? 0 : 24,
           right: widget.sendByMe ? 24 : 0),
       alignment: widget.sendByMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        margin: widget.sendByMe
-            ? EdgeInsets.only(left: 30)
-            : EdgeInsets.only(right: 30),
-        padding: EdgeInsets.only(
-            top: 17, bottom: 17, left: 20, right: 20),
-        decoration: BoxDecoration(
-            borderRadius: widget.sendByMe ? BorderRadius.only(
-                topLeft: Radius.circular(23),
-                topRight: Radius.circular(23),
-                bottomLeft: Radius.circular(23)
-            ) :
-            BorderRadius.only(
-        topLeft: Radius.circular(23),
-          topRight: Radius.circular(23),
-          bottomRight: Radius.circular(23)),
-            gradient: LinearGradient(
-              colors: widget.sendByMe ? [
-                const Color(0xffFF3798),
-                const Color(0xffFF9E50),
-              ]
-                  : [
-                Colors.deepPurple,
-                Colors.teal
-              ],
+      child: InkWell(
+        onTap: ()=>vibe(),
+        child: Container(
+          margin: widget.sendByMe
+              ? EdgeInsets.only(left: 30)
+              : EdgeInsets.only(right: 30),
+          padding: EdgeInsets.only(
+              top: 17, bottom: 17, left: 20, right: 20),
+          decoration: BoxDecoration(
+              borderRadius: widget.sendByMe ? BorderRadius.only(
+                  topLeft: Radius.circular(23),
+                  topRight: Radius.circular(23),
+                  bottomLeft: Radius.circular(23)
+              ) :
+              BorderRadius.only(
+          topLeft: Radius.circular(23),
+            topRight: Radius.circular(23),
+            bottomRight: Radius.circular(23)),
+              gradient: LinearGradient(
+                colors: widget.sendByMe ? [
+                  const Color(0xffFF3798),
+                  const Color(0xffFF9E50),
+                ]
+                    : [
+                  Colors.deepPurple,
+                  Colors.teal
+                ],
+              )
+          ),
+          child: Text(widget.message,
+            textAlign: TextAlign.start,
+            style:TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontFamily: 'OverpassRegular',
+            fontWeight: FontWeight.w700)
             )
         ),
-        child: InkWell(
-          onTap: ()=>vibe(),
-            child: Text(widget.message,
-              textAlign: TextAlign.start,
-              style:TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontFamily: 'OverpassRegular',
-              fontWeight: FontWeight.w700)
-          ),
-        )
       ),
     );
   }
