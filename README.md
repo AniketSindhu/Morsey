@@ -1,7 +1,7 @@
 # Morsey
 
-* An interactive messaging platform designed for the users to send the messages in the form of **Morse Code**. 
-
+* An interactive messaging platform designed for the users to send the messages in the form of **Morse Code**.
+* An app that fits into both retro and cyberpunk future theme.
 * **Morsey** offers a wide range of features from *messaging* to *scan to translate, shake to convert message in English, tap on message to feel the morse code in the form of vibration etc.*
 
 
