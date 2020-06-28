@@ -1,12 +1,21 @@
 # Morsey
 
-An interactive messaging platform designed for the users to send the messages in the form of **Morse Code**. 
+* An interactive messaging platform designed for the users to send the messages in the form of **Morse Code**. 
+
+* **Morsey** offers a wide range of features from *messaging* to *scan to translate, shake to convert message in English, tap on message to feel the morse code in the form of vibration etc.*
+
 
 ## Description
 * The main supported language is **English** . 
 * Users can sign into app using ***Google*** .
 * Users have to write the message into English and then app translates the message written by user to ***Morse Code*** . 
 * After translation app forwards the message to other user.
+
+* This app is not limited to simply messaging it offers more astonishing features :
+* *Scan to translate.*
+* *User can also experience **Morse Code Signals** in the form of vibrations by simply tapping the message.* 
+* *This app also offers **shake to convert** option where user can view the original message in English by simply shaking the phone.*
+
 * The designing to programming of the app was finished within 2 days.
 * This platform is initially designed for *android users*.
 
@@ -16,6 +25,7 @@ An interactive messaging platform designed for the users to send the messages in
 * Morse Code played a very important role during 20th century and is believed to be very effective & essential in future.
 * The idea behind the app was to provide a fun and interactive way to help users to experience the magnificence of Morse Code.
 * This app can also be seen as a fun way to learn morse code.
+* **Morsey** is designed to bring change in the lives of common people 
 
 #### Significance of Morse Code
 
@@ -33,7 +43,8 @@ Morse Code. //
 #### About App
 * Flutter Version = v1.17.4
 * Channel = Stable
-* **Theme** = Cyberpunk Future
+* **Theme** = *Cyberpunk and Retro*       
+              *Future*
 
 
 ##### Team
