@@ -4,6 +4,8 @@
 * An app that fits into both retro and cyberpunk future theme.
 * **Morsey** offers a wide range of features from *messaging* to *scan to translate, shake to convert message in English, tap on message to feel the morse code in the form of vibration etc.*
 
+## Download the app
+[Download Morsey.apk](https://drive.google.com/file/d/1W5a31gIY4IPWH63spN1M1L4lzLNTRPUH/view?usp=sharing)
 
 ## Description
 * The main supported language is **English** . 
@@ -43,9 +45,7 @@ Morse Code. //
 #### About App
 * Flutter Version = v1.17.4
 * Channel = Stable
-* **Theme** = *Cyberpunk and Retro*       
-              *Future*
-
+* **Theme** = *Cyberpunk future and Retro*
 
 ##### Team
 
