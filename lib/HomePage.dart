@@ -11,6 +11,8 @@ import 'package:morse/morse.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'Login.dart';
 import 'Signal.dart';
+import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -53,19 +55,14 @@ class _HomePageState extends State<HomePage> {
               activeColor: Color(0xFFFF16CD)
           ),
           BottomNavyBarItem(
+              icon: Icon(Icons.image),
+              title: Text('OCR'),
+              activeColor: Colors.purpleAccent
+          ),
+          BottomNavyBarItem(
             icon: Icon(Icons.school),
             title: Text('Learn'),
             activeColor: Colors.red,
-          ),
-          BottomNavyBarItem(
-              icon: Icon(Icons.translate),
-              title: Text('Translate'),
-              activeColor: Color(0xffFFC64D)
-          ),
-          BottomNavyBarItem(
-              icon: Icon(Icons.image),
-              title: Text('Detect'),
-              activeColor: Colors.purpleAccent
           ),
         ],
       ),
@@ -82,7 +79,7 @@ class _HomePageState extends State<HomePage> {
             ])          
          ),        
         ),
-        title: Text('Morsey',style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:27,fontWeight: FontWeight.w700)),),
+        title: Text('Morsey',style:GoogleFonts.montserrat(textStyle:TextStyle(color: Colors.white,fontSize:27,fontWeight: FontWeight.w600)),),
         actions: <Widget>[
           PopupMenuButton(
             color:Colors.tealAccent[400],
@@ -113,7 +110,7 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
         backgroundColor: Colors.orange[400],
       ):null,
-      body:user!=null?StreamBuilder(
+      body:_selectedIndex==0?user!=null?StreamBuilder(
         stream: Firestore.instance.collection('signals').where('users',arrayContains:user.email).snapshots(),
         builder: (context,snapshot){
           if(snapshot.connectionState==ConnectionState.waiting)
@@ -192,7 +189,8 @@ class _HomePageState extends State<HomePage> {
             );
         },
       ):
-      Center(child: CircularProgressIndicator(),)
+      Center(child: CircularProgressIndicator(),):
+      _selectedIndex==1?OCR():Learn()
     );
   }
 }
@@ -281,6 +279,69 @@ class _NewSignalState extends State<NewSignal> {
           SizedBox(height:40)
         ],
       ) ,
+    );
+  }
+}
+
+class OCR extends StatefulWidget {
+  @override
+  _OCRState createState() => _OCRState();
+}
+
+class _OCRState extends State<OCR> {
+  int _cameraOcr = FlutterMobileVision.CAMERA_BACK;
+  String _textValue = "sample";
+  @override
+  Future<Null> _read() async {
+    List<OcrText> texts = [];
+    try {
+      texts = await FlutterMobileVision.read(
+        camera: _cameraOcr,
+        waitTap: true,
+        fps: 2.0
+      );
+
+      setState(() {
+        _textValue = (texts[0].value);
+      });
+    } on Exception {
+      texts.add(new OcrText('Failed to recognize text.'));
+    }
+  }
+  Widget build(BuildContext context) {
+    return Center(
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Lottie.asset('assets/scan-some-words.json'),
+          SizedBox(height:20),
+          Text(_textValue,style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
+          SizedBox(height:10),
+          Text(Morse(_textValue).encode(),style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
+          SizedBox(height:30),
+          RaisedButton(
+             onPressed: _read,
+            child: new Text('Start Scanning'),
+            color: Color(0xFFFF16CD),
+            splashColor: Colors.orangeAccent,
+          ),
+          SizedBox(height:10),
+          Text('Tap on the text to convert into morse code',style: TextStyle(color:Color(0xffE6BBFC)),)
+        ]
+      )
+    );
+  }
+}
+
+
+class Learn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Image.asset('assets/learnMorse.jpg',height: MediaQuery.of(context).size.height,width:MediaQuery.of(context).size.width),
+      )
     );
   }
 }

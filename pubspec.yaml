@@ -42,6 +42,8 @@ dependencies:
   fluttertoast: ^4.0.1
   morse: ^0.1.4+1
   flutter_shake_plugin: ^0.0.2
+  flutter_mobile_vision: ^0.1.4+1
+
 
 
 dev_dependencies:
