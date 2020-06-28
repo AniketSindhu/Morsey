@@ -315,7 +315,7 @@ class _OCRState extends State<OCR> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Lottie.asset('assets/scan-some-words.json'),
+            Lottie.asset('assets/scan-some-words.json',repeat: false),
             SizedBox(height:20),
             Text(_textValue,style:GoogleFonts.orbitron(textStyle:TextStyle(color: Colors.white,fontSize:20,fontWeight: FontWeight.w500)),textAlign: TextAlign.center,),
             SizedBox(height:10),
