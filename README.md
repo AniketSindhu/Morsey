@@ -64,6 +64,5 @@ Morse Code.
 <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/morse%20illustration.gif">
 
 #### All screens
-
 <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593295865.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332659.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332670.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332706.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593332717.png"> <img width="200" alt="portfolio_view" src="https://github.com/AniketSindhu/Morsey/blob/master/Screenshots/Screenshot_1593336151.png">
 
