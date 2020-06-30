@@ -46,7 +46,7 @@ Morse Code.
 ### About App
 * Flutter Version = v1.17.4
 * Channel = Stable
-* **Theme** = *Cyberpunk future and Retro*
+* **Theme** = *Cyberpunk/Retro Future*
 
 ### Team Members
 * Aniket Sindhu
