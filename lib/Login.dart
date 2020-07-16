@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
               children:[
                 TextSpan(text:"You accept the"),
                 TextSpan(text:" Privacy policy ",recognizer: TapGestureRecognizer()..onTap=(){
-                  launch("https://morsey.flycricket.io/");
+                  launch("https://morsey.flycricket.io/privacy.html");
                 },style: TextStyle(color:Colors.blue,fontStyle: FontStyle.italic)),
                 TextSpan(text:"of morsey")
               ] )),
