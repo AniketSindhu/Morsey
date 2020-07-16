@@ -339,7 +339,7 @@ class _NewSignalState extends State<NewSignal> {
                     .get();
 
                 if (widget.user.email ==
-                    mailController.text.replaceAll("", "")) {
+                    mailController.text.replaceAll(" ", "")) {
                   Fluttertoast.showToast(
                       msg: "You can't chat with yourself",
                       toastLength: Toast.LENGTH_SHORT,

@@ -41,6 +41,7 @@ dependencies:
   flutter_shake_plugin: ^0.0.2
   flutter_mobile_vision: ^0.1.4+1
   vibration: ^1.4.0
+  url_launcher: ^5.5.0
 
 
 dev_dependencies:
