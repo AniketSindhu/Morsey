@@ -20,24 +20,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
   FirebaseUser user;
   int _selectedIndex = 0;
   bool fab = true;
   bool old = false;
-  @override
+
   getUser() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     user = await _auth.currentUser();
     setState(() {});
     print(user.email);
   }
-
+  @override
   void initState() {
     super.initState();
     getUser();
   }
-
+  @override
   Widget build(BuildContext context) {
     var height = SizeConfig.getHeight(context);
     var width = SizeConfig.getWidth(context);

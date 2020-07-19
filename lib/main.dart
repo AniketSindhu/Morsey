@@ -15,16 +15,6 @@ void main() async {
 
 class MyApp1 extends StatelessWidget {
   // This widget is the root of your application.
-  final FirebaseMessaging _messaging = FirebaseMessaging();
-
-  @override
-  void initState() {
-    super.initState();
-
-    _messaging.getToken().then((token) {
-      print(token);
-    });
-  }
 
   Widget build(BuildContext context) {
     return MaterialApp(

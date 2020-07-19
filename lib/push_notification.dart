@@ -1,20 +1,27 @@
-import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-class PushNotificationService {
-  final FirebaseMessaging _messaging = FirebaseMessaging();
+class PushNotificationsManager {
 
-  Future initialise() async {
-    if (Platform.isAndroid) {
-      _messaging.requestNotificationPermissions(IosNotificationSettings());
+  PushNotificationsManager._();
+
+  factory PushNotificationsManager() => _instance;
+
+  static final PushNotificationsManager _instance = PushNotificationsManager._();
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  bool _initialized = false;
+
+  Future<void> init() async {
+    if (!_initialized) {
+      // For iOS request permission first.
+      _firebaseMessaging.requestNotificationPermissions();
+      _firebaseMessaging.configure();
+
+      // For testing purposes print the Firebase Messaging token
+      String token = await _firebaseMessaging.getToken();
+      print("FirebaseMessaging token: $token");
+      
+      _initialized = true;
     }
-
-    _messaging.configure(onMessage: (Map<String, dynamic> message) {
-      print('onMessage: $message');
-    }, onLaunch: (Map<String, dynamic> message) {
-      print('onLaunch: $message');
-    }, onResume: (Map<String, dynamic> message) {
-      print('onResume: $message');
-    });
   }
 }
