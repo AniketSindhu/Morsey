@@ -4,16 +4,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Login.dart';
 import 'config/config.dart';
 
-void main() async{
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool login=prefs.getBool('login');
-  runApp(login==null?MyApp1():login?MyApp2():MyApp1());
+  bool login = prefs.getBool('login');
+  runApp(login == null ? MyApp1() : login ? MyApp2() : MyApp1());
 }
 
 class MyApp1 extends StatelessWidget {
   // This widget is the root of your application.
+  final FirebaseMessaging _messaging = FirebaseMessaging();
+
   @override
+  void initState() {
+    super.initState();
+
+    _messaging.getToken().then((token) {
+      print(token);
+    });
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -23,10 +35,10 @@ class MyApp1 extends StatelessWidget {
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:Login(),
+      home: Login(),
       routes: {
-        'login':(context)=>Login(),
-        'homepage':(context)=>HomePage()
+        'login': (context) => Login(),
+        'homepage': (context) => HomePage()
       },
     );
   }
@@ -44,12 +56,11 @@ class MyApp2 extends StatelessWidget {
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:HomePage(),
+      home: HomePage(),
       routes: {
-        'login':(context)=>Login(),
-        'homepage':(context)=>HomePage()
+        'login': (context) => Login(),
+        'homepage': (context) => HomePage()
       },
     );
   }
 }
-
