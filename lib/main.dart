@@ -24,7 +24,12 @@ class MyApp1 extends StatelessWidget {
         primarySwatch: Colors.teal,
         brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        
       ),
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
       home: Login(),
       routes: {
         'login': (context) => Login(),

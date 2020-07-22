@@ -12,6 +12,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'Login.dart';
 import 'Signal.dart';
 import 'package:flutter_mobile_vision/flutter_mobile_vision.dart';
+import 'package:share/share.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -31,11 +32,19 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
     print(user.email);
   }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   @override
   void initState() {
     super.initState();
     getUser();
   }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     var height = SizeConfig.getHeight(context);
@@ -87,6 +96,19 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600)),
           ),
           actions: <Widget>[
+<<<<<<< Updated upstream
+=======
+            IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: Colors.white,
+                ),
+                onPressed: () async {
+                  Share.share(
+                      'Checkout this amazing Social Messaging App Morsey',
+                      subject: 'Morsey : Chat in Morse Code');
+                }),
+>>>>>>> Stashed changes
             PopupMenuButton(
               color: Colors.tealAccent[400],
               itemBuilder: (BuildContext context) {
