@@ -32,19 +32,11 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
     print(user.email);
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   @override
   void initState() {
     super.initState();
     getUser();
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     var height = SizeConfig.getHeight(context);
@@ -96,8 +88,6 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600)),
           ),
           actions: <Widget>[
-<<<<<<< Updated upstream
-=======
             IconButton(
                 icon: Icon(
                   Icons.share,
@@ -108,7 +98,6 @@ class _HomePageState extends State<HomePage> {
                       'Checkout this amazing Social Messaging App Morsey',
                       subject: 'Morsey : Chat in Morse Code');
                 }),
->>>>>>> Stashed changes
             PopupMenuButton(
               color: Colors.tealAccent[400],
               itemBuilder: (BuildContext context) {

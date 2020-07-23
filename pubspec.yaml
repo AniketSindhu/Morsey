@@ -44,13 +44,9 @@ dependencies:
   vibration: ^1.4.0
   url_launcher: ^5.5.0
   firebase_messaging: ^6.0.16
-<<<<<<< Updated upstream
-
-=======
   share: ^0.6.4+3
-   
->>>>>>> Stashed changes
-
+  flutter_emoji: ^2.2.1+1
+  
 dev_dependencies:
   flutter_launcher_icons: "^0.7.3"
   

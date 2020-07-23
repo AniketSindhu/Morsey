@@ -26,10 +26,6 @@ class MyApp1 extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         
       ),
-<<<<<<< Updated upstream
-=======
-      
->>>>>>> Stashed changes
       home: Login(),
       routes: {
         'login': (context) => Login(),

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:morse/morse.dart';
 import 'package:flutter_shake_plugin/flutter_shake_plugin.dart';
 import 'package:vibration/vibration.dart';
 import 'package:emoji_picker/emoji_picker.dart';
+import 'package:flutter_emoji/flutter_emoji.dart' as Emoji1;
 
 class Signal extends StatefulWidget {
   final String chatId;
@@ -21,12 +21,14 @@ class Signal extends StatefulWidget {
 class _SignalState extends State<Signal> {
   final Firestore _firestore = Firestore.instance;
   bool english = false;
+  bool emojiShow = false;
+  var parser = Emoji1.EmojiParser();
   FlutterShakePlugin _shakePlugin;
   TextEditingController messageController = TextEditingController();
   ScrollController scrollController = ScrollController();
   Future<void> callback() async {
     if (messageController.text.length > 0) {
-      String morseMessage = Morse(messageController.text).encode();
+      String morseMessage = Morse(parser.unemojify(messageController.text)).encode();
       await _firestore
           .collection('signals')
           .document(widget.chatId)
@@ -127,20 +129,11 @@ class _SignalState extends State<Signal> {
                   List<Widget> messages = docs
                       .map((doc) => Message(
                             message: english
-                                ? Morse(doc.data['text']).decode()
+                                ? parser.emojify(Morse((doc.data['text'])).decode())
                                 : doc.data['text'],
                             sendByMe: widget.user.email == doc.data['from'],
                           ))
                       .toList();
-                  return EmojiPicker(
-                    rows: 3,
-                    columns: 7,
-                    recommendKeywords: ["lol", "hi"],
-                    numRecommended: 10,
-                    onEmojiSelected: (emoji, category) {
-                      print(emoji);
-                    },
-                  );
                   return ListView(
                     controller: scrollController,
                     children: <Widget>[
@@ -168,6 +161,14 @@ class _SignalState extends State<Signal> {
                       ),
                     ),
                   ),
+                  IconButton(
+                    icon: Icon(Icons.sentiment_neutral),
+                    onPressed:(){
+                      FocusScope.of(context).requestFocus(new FocusNode());
+                      setState(() {
+                        emojiShow=!emojiShow;
+                      });
+                    }),
                   SendButton(
                     text: "Send",
                     callback: callback,
@@ -175,13 +176,26 @@ class _SignalState extends State<Signal> {
                 ],
               ),
             ),
+            (emojiShow ? buildEmoji(messageController) : Container()),
           ],
         ),
       ),
     );
   }
 }
-
+Widget buildEmoji(TextEditingController controller) {
+    return EmojiPicker(
+      rows: 3,
+      columns: 7,
+      buttonMode: ButtonMode.MATERIAL,
+      bgColor: Color(0xff1B0536),
+      numRecommended: 10,
+      onEmojiSelected: (emoji, category) {
+        controller.text= "${controller.text}${emoji.emoji}";
+        emoji.emoji.characters.forEach((element) {print(element);});
+      },
+    );
+  }
 class SendButton extends StatelessWidget {
   final String text;
   final VoidCallback callback;
